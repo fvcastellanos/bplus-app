@@ -19,7 +19,7 @@ public class MainApp extends Application {
     public void start(Stage stage) throws Exception {
 
 
-        String fxmlFile = "/fxml/Default.fxml";
+        String fxmlFile = "/fxml/default.fxml";
         FXMLLoader loader = new FXMLLoader();
         Parent rootNode = (Parent) loader.load(getClass().getResourceAsStream(fxmlFile));
 
