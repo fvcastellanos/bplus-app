@@ -19,6 +19,7 @@ public abstract class Node {
     // both types of node need to insert and search
     abstract Node insert(DataNode dnode);
     abstract boolean search(DataNode x);
+    abstract Node findNode(DataNode x);
 
     protected boolean isFull() {
         return data.size() == maxsize-1;

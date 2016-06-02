@@ -9,7 +9,6 @@ public class BPlusTree {
 
     private static Node tree;
     private static int degree;
-    private static boolean debug;
 
     public BPlusTree(int x) {
         // a B+ Tree must have an initial degree
@@ -17,12 +16,14 @@ public class BPlusTree {
 
         // The initial type of Node for a B+Tree is a leaf
         tree = new LeafNode(degree);
-
-        debug = false;
     }
 
     public void insertIntoTree(DataNode dnode) {
         tree = tree.insert(dnode);
+    }
+
+    public Node findIndex(int index) {
+        return null;
     }
 
     public void searchTree(int x, BufferedWriter output) throws IOException {

@@ -43,6 +43,16 @@ public class TreeNode extends Node {
         return next.search(dnode);
     }
 
+    @Override
+    public Node findNode(DataNode x) {
+        // get a pointer to where dnode.data should be found
+        Node next = this.getPointerTo(x);
+
+        // recursive call to find dnode.data if it is present
+//        return next.search(x);
+        return null;
+    }
+
     protected void split(DataNode dnode, Node left, Node right) {
         // calculate the split point ( floor(maxsize/2)
         int splitlocation, insertlocation = 0;
