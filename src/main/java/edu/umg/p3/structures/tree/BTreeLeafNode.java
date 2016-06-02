@@ -9,6 +9,11 @@ class BTreeLeafNode<TKey extends Comparable<TKey>, TValue> extends BTreeNode<TKe
 		this.values = new Object[LEAFORDER + 1];
 	}
 
+	public BTreeLeafNode(int order) {
+		this.keys = new Object[order + 1];
+		this.values = new Object[order + 1];
+	}
+
 	@SuppressWarnings("unchecked")
 	public TValue getValue(int index) {
 		return (TValue)this.values[index];

@@ -8,6 +8,11 @@ class BTreeInnerNode<TKey extends Comparable<TKey>> extends BTreeNode<TKey> {
 		this.keys = new Object[INNERORDER + 1];
 		this.children = new Object[INNERORDER + 2];
 	}
+
+	public BTreeInnerNode(int order) {
+        this.keys = new Object[order + 1];
+        this.children = new Object[order + 2];
+    }
 	
 	@SuppressWarnings("unchecked")
 	public BTreeNode<TKey> getChild(int index) {
