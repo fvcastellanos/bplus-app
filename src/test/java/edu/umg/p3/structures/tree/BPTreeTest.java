@@ -1,4 +1,4 @@
-package edu.umg.p3.structures;
+package edu.umg.p3.structures.tree;
 
 import edu.umg.p3.structures.tree.BTree;
 import org.junit.Test;
