@@ -2,17 +2,24 @@ package edu.umg.p3.structures.file;
 
 import edu.umg.p3.dto.Field;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by fvcg2 on 2/06/2016.
  */
 public class RowDefinition {
-    private Set<Field> structure;
+    private long rowNumber;
+    private List<Field> structure;
 
     public RowDefinition() {
-        structure = new HashSet<>();
+        structure = new ArrayList<>();
+        rowNumber = 0L;
+    }
+
+    public RowDefinition(long rowNumber, List<Field> structure) {
+        this.structure = structure;
+        this.rowNumber = rowNumber;
     }
 
     public void addField(Field field) throws Exception {
@@ -50,5 +57,21 @@ public class RowDefinition {
         }
 
         return size;
+    }
+
+    public List<Field> getStructure() {
+        return structure;
+    }
+
+    public void setStructure(List<Field> structure) {
+        this.structure = structure;
+    }
+
+    public long getRowNumber() {
+        return rowNumber;
+    }
+
+    public void setRowNumber(long rowNumber) {
+        this.rowNumber = rowNumber;
     }
 }
