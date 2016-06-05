@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<SplitPane dividerPositions="0.36180904522613067" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.umg.p3.controllers.RowDefinitionController">
+<SplitPane dividerPositions="0.36180904522613067" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.umg.p3.controllers.RowDefinitionController">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="116.0" prefWidth="598.0">
          <children>
@@ -17,7 +17,7 @@
             <Label layoutX="22.0" layoutY="57.0" text="Field size:" />
             <TextField fx:id="fieldName" layoutX="116.0" layoutY="19.0" />
             <Button fx:id="addField" layoutX="314.0" layoutY="18.0" mnemonicParsing="false" onAction="#addFieldAction" prefHeight="26.0" prefWidth="77.0" text="Add" AnchorPane.rightAnchor="207.0" />
-            <Button layoutX="314.0" layoutY="55.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="77.0" text="Clear" AnchorPane.rightAnchor="207.0" />
+            <Button fx:id="saveFieldDefinition" layoutX="314.0" layoutY="55.0" mnemonicParsing="false" onAction="#saveFieldDefinitionAction" prefHeight="26.0" prefWidth="77.0" text="Save" AnchorPane.rightAnchor="207.0" />
             <TextField fx:id="fieldSize" layoutX="116.0" layoutY="52.0" prefHeight="26.0" prefWidth="65.0" />
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="175.0" prefWidth="598.0">
@@ -26,8 +26,8 @@
                <center>
                   <TableView fx:id="tableView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                     <columns>
-                      <TableColumn editable="false" prefWidth="259.0" sortable="false" text="Name" />
-                      <TableColumn minWidth="2.0" prefWidth="85.0" text="Size" />
+                      <TableColumn fx:id="nameColumn" editable="false" prefWidth="259.0" sortable="false" text="Name" />
+                      <TableColumn fx:id="sizeColumn" minWidth="2.0" prefWidth="85.0" text="Size" />
                     </columns>
                   </TableView>
                </center>

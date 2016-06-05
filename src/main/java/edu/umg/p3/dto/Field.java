@@ -8,70 +8,27 @@ import static org.apache.commons.lang.StringUtils.leftPad;
 public class Field {
     private int order;
     private String name;
-    private int size;
+    private Integer size;
     private boolean key;
     private String value;
 
     private Field(Builder builder) {
-        setOrder(builder.order);
-        setName(builder.name);
-        setSize(builder.size);
-        setKey(builder.key);
-        setValue(builder.value);
+        order = builder.order;
+        name = builder.name;
+        size = builder.size;
+        key = builder.key;
+        value = builder.value;
     }
 
     public static Builder newBuilder() {
         return new Builder();
     }
 
-    public int getOrder() {
-        return order;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getSize() {
-        return size;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public String getFullValue() {
-        return leftPad(value, size - value.length(), ' ');
-    }
-
-    public boolean isKey() {
-        return key;
-    }
-
-    public void setOrder(int order) {
-        this.order = order;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setSize(int size) {
-        this.size = size;
-    }
-
-    public void setKey(boolean key) {
-        this.key = key;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-    }
 
     public static final class Builder {
         private int order;
         private String name;
-        private int size;
+        private Integer size;
         private boolean key;
         private String value;
 
@@ -88,7 +45,7 @@ public class Field {
             return this;
         }
 
-        public Builder withSize(int val) {
+        public Builder withSize(Integer val) {
             size = val;
             return this;
         }
@@ -106,5 +63,49 @@ public class Field {
         public Field build() {
             return new Field(this);
         }
+    }
+
+    public int getOrder() {
+        return order;
+    }
+
+    public void setOrder(int order) {
+        this.order = order;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getFullValue() {
+        return leftPad(value, size - value.length(), " ");
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getSize() {
+        return size;
+    }
+
+    public void setSize(Integer size) {
+        this.size = size;
+    }
+
+    public boolean isKey() {
+        return key;
+    }
+
+    public void setKey(boolean key) {
+        this.key = key;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
     }
 }
