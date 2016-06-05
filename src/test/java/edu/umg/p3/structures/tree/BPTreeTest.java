@@ -17,7 +17,7 @@ public class BPTreeTest {
     public void insertTreeNodeTest() {
         String key = "1";
         String data = "This is a test data";
-        BTree<String, String> tree = new BTree<>(5);
+        BTree<String, String> tree = new BTree<>(3);
         assertNotNull(tree);
 
         tree.insert(key, data);
@@ -35,7 +35,7 @@ public class BPTreeTest {
         String key2 = "2";
         String data2 = "This a second test data";
 
-        BTree<String, String> tree = new BTree<>(5);
+        BTree<String, String> tree = new BTree<>(3);
         assertNotNull(tree);
 
         tree.insert(key, data);
