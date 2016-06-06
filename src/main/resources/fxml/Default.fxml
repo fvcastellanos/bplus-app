@@ -11,5 +11,6 @@
       <Button layoutX="23.0" layoutY="137.0" mnemonicParsing="false" onAction="#addRowsAction" prefHeight="31.0" prefWidth="143.0" text="Search Vehicle" />
       <Button layoutX="238.0" layoutY="24.0" mnemonicParsing="false" onAction="#addRowsAction" prefHeight="31.0" prefWidth="143.0" text="B+ Structure" />
       <Button layoutX="238.0" layoutY="81.0" mnemonicParsing="false" onAction="#addRowsAction" prefHeight="31.0" prefWidth="143.0" text="Display File" />
+      <Button layoutX="238.0" layoutY="137.0" mnemonicParsing="false" onAction="#closeApplication" prefHeight="31.0" prefWidth="143.0" text="Exit App." />
    </children>
 </Pane>

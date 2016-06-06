@@ -23,7 +23,7 @@ public class RowDefinition {
         if(!alreadyExistsKey(field)) {
             structure.add(field);
         } else {
-            throw new Exception("This Row already have a key");
+            throw new Exception("This Row already has a key");
         }
     }
 
@@ -73,6 +73,10 @@ public class RowDefinition {
         }
 
         return null;
+    }
+
+    public int getFieldsCount() {
+        return structure.size();
     }
 
     public List<Field> getStructure() {

@@ -13,10 +13,10 @@ import static edu.umg.p3.dialogs.DialogsUtils.showWarning;
 /**
  * Created by fvcg2 on 5/06/2016.
  */
-public class DefaultController {
+public class DefaultController extends BaseController {
 
     private static String [] ROW_DEFINITION = { "/fxml/row-definition.fxml", "Vehicle system - Row Definition" };
-    private static String [] ADD_ROWS = { "/fxml/add-vehicle.fxml", "Vehicle system - Add vehicle" };
+    private static String [] ADD_ROWS = { "/fxml/vehicles.fxml", "Vehicle system - Add vehicle" };
 
     private VehicleService getVehicleService() {
         return VehicleService.getInstance();
@@ -61,5 +61,10 @@ public class DefaultController {
         } else {
             showWarning("Vehicle system", "You have to define a record structure first");
         }
+    }
+
+    @FXML
+    private void closeApplication(ActionEvent actionEvent) {
+        this.closeWindow(actionEvent);
     }
 }

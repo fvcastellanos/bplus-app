@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -16,9 +17,10 @@
             <Label layoutX="23.0" layoutY="24.0" text="Field name:" />
             <Label layoutX="22.0" layoutY="57.0" text="Field size:" />
             <TextField fx:id="fieldName" layoutX="116.0" layoutY="19.0" />
-            <Button fx:id="addField" layoutX="314.0" layoutY="18.0" mnemonicParsing="false" onAction="#addFieldAction" prefHeight="26.0" prefWidth="77.0" text="Add" AnchorPane.rightAnchor="207.0" />
-            <Button fx:id="saveFieldDefinition" layoutX="314.0" layoutY="55.0" mnemonicParsing="false" onAction="#saveFieldDefinitionAction" prefHeight="26.0" prefWidth="77.0" text="Save" AnchorPane.rightAnchor="207.0" />
             <TextField fx:id="fieldSize" layoutX="116.0" layoutY="52.0" prefHeight="26.0" prefWidth="65.0" />
+            <CheckBox fx:id="isKey" layoutX="22.0" layoutY="93.0" mnemonicParsing="false" text="Is Key" />
+            <Button fx:id="addField" layoutX="314.0" layoutY="18.0" mnemonicParsing="false" onAction="#addFieldAction" prefHeight="26.0" prefWidth="77.0" text="Add" />
+            <Button fx:id="saveFieldDefinition" layoutX="314.0" layoutY="55.0" mnemonicParsing="false" onAction="#saveFieldDefinitionAction" prefHeight="26.0" prefWidth="77.0" text="Save" />
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="175.0" prefWidth="598.0">
          <children>
@@ -28,6 +30,7 @@
                     <columns>
                       <TableColumn fx:id="nameColumn" editable="false" prefWidth="259.0" sortable="false" text="Name" />
                       <TableColumn fx:id="sizeColumn" minWidth="2.0" prefWidth="85.0" text="Size" />
+                        <TableColumn fx:id="isKeyColumn" editable="false" prefWidth="75.0" sortable="false" text="Is Key" />
                     </columns>
                   </TableView>
                </center>
