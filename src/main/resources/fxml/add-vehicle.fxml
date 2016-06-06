@@ -5,14 +5,14 @@
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<TitledPane animated="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" text="Vehicle" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.60">
+<TitledPane animated="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" text="Vehicle" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.60" fx:controller="edu.umg.p3.controllers.VehicleController">
   <content>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
          <children>
-            <TableView layoutX="110.0" layoutY="103.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
+            <TableView fx:id="fieldTable" editable="true" layoutX="110.0" layoutY="103.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
               <columns>
-                <TableColumn editable="false" prefWidth="187.0" sortable="false" text="Field" />
-                <TableColumn minWidth="0.0" prefWidth="348.0" sortable="false" text="Value" />
+                <TableColumn fx:id="fieldColumn" editable="false" prefWidth="187.0" sortable="false" text="Field" />
+                <TableColumn fx:id="valueColumn" minWidth="0.0" prefWidth="348.0" sortable="false" text="Value" />
               </columns>
             </TableView>
          </children></AnchorPane>

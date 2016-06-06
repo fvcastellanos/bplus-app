@@ -9,17 +9,14 @@ import java.util.List;
  * Created by fvcg2 on 2/06/2016.
  */
 public class RowDefinition {
-    private long rowNumber;
     private List<Field> structure;
 
     public RowDefinition() {
         structure = new ArrayList<>();
-        rowNumber = 0L;
     }
 
-    public RowDefinition(long rowNumber, List<Field> structure) {
+    public RowDefinition(List<Field> structure) {
         this.structure = structure;
-        this.rowNumber = rowNumber;
     }
 
     public void addField(Field field) throws Exception {
@@ -59,6 +56,25 @@ public class RowDefinition {
         return size;
     }
 
+    public int getOrderSize(int order) {
+        int size = 0;
+        for(int i=0;i<order;i++) {
+            size += structure.get(i).getSize();
+        }
+
+        return size;
+    }
+
+    public Field findField(String name) {
+        for(Field field : structure) {
+            if(field.getName().equals(name)) {
+                return field;
+            }
+        }
+
+        return null;
+    }
+
     public List<Field> getStructure() {
         return structure;
     }
@@ -67,11 +83,4 @@ public class RowDefinition {
         this.structure = structure;
     }
 
-    public long getRowNumber() {
-        return rowNumber;
-    }
-
-    public void setRowNumber(long rowNumber) {
-        this.rowNumber = rowNumber;
-    }
 }

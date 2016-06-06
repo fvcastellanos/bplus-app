@@ -1,9 +1,10 @@
 package edu.umg.p3.structures.file;
 
-import edu.umg.p3.dto.Field;
+import edu.umg.p3.structures.tree.BTree;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.UUID;
 
 /**
@@ -11,34 +12,61 @@ import java.util.UUID;
  */
 public class FileDefinition {
     private String fileName;
-    private List<RowDefinition> rows;
+    private RowDefinition rowDefinition;
+    private BTree<String, String> tree;
+    private int size;
 
-    public FileDefinition() {
-        rows = new ArrayList<>();
+    public FileDefinition(RowDefinition rowDefinition) {
         fileName = UUID.randomUUID().toString();
+        this.rowDefinition = rowDefinition;
+        size = 0;
+        tree = new BTree<>(3);
     }
 
-    public FileDefinition(String fileName) {
-        rows = new ArrayList<>();
+    public FileDefinition(String fileName, RowDefinition rowDefinition) {
         this.fileName = fileName;
+        this.rowDefinition = rowDefinition;
+        size = 0;
+        tree = new BTree<>(3);
     }
 
-    public void addRow(RowDefinition rowDefinition) {
-        rows.add(rowDefinition);
+    public void writeRow(String data) {
+        try {
+            File file = new File(fileName);
+
+            if(!file.exists()) {
+                file.createNewFile();
+            }
+
+            byte [] content = data.getBytes();
+
+            FileOutputStream fop = new FileOutputStream(file);
+            fop.write(content);
+            fop.flush();
+            fop.close();
+
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
+    public String readRow(int record) {
+        String value = null;
+        try {
+            File file = new File(fileName);
+            byte [] content = null;
+            FileInputStream fis = new FileInputStream(file);
+            fis.read(content, record * rowDefinition.getRowSize(), rowDefinition.getRowSize());
+            fis.close();
 
-    private String rowToString(RowDefinition rowDefinition) {
+             value = new String(content);
 
-        StringBuilder builder = new StringBuilder();
-        for (Field field : rowDefinition.getStructure()) {
-            builder.append(field.getFullValue());
+        } catch(Exception ex) {
+            ex.printStackTrace();
         }
 
-        return builder.toString();
+        return value;
     }
 
-    public void writeFileToDisk() {
-
-    }
 }

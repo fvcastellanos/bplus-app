@@ -10,27 +10,23 @@ public class Field {
     private String name;
     private Integer size;
     private boolean key;
-    private String value;
 
     private Field(Builder builder) {
         order = builder.order;
         name = builder.name;
         size = builder.size;
         key = builder.key;
-        value = builder.value;
     }
 
     public static Builder newBuilder() {
         return new Builder();
     }
 
-
     public static final class Builder {
         private int order;
         private String name;
         private Integer size;
         private boolean key;
-        private String value;
 
         private Builder() {
         }
@@ -55,11 +51,6 @@ public class Field {
             return this;
         }
 
-        public Builder withValue(String val) {
-            value = val;
-            return this;
-        }
-
         public Field build() {
             return new Field(this);
         }
@@ -75,10 +66,6 @@ public class Field {
 
     public String getName() {
         return name;
-    }
-
-    public String getFullValue() {
-        return leftPad(value, size - value.length(), " ");
     }
 
     public void setName(String name) {
@@ -99,13 +86,5 @@ public class Field {
 
     public void setKey(boolean key) {
         this.key = key;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
     }
 }
