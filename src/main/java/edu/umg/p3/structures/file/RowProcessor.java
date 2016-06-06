@@ -39,7 +39,7 @@ public class RowProcessor {
             if(value.length() > field.getSize()) {
                 str = value.substring(0, field.getSize() - 1);
             } else {
-                str = leftPad(value, field.getSize() - value.length(), " ");
+                str = leftPad(value, field.getSize(), " ");
             }
 
             rowMap.put(name, str);
@@ -54,15 +54,26 @@ public class RowProcessor {
         for(Field field : fields)  {
             put(field.getName(),
                     data.substring(rowDefinition.getOrderSize(i),
-                            rowDefinition.getOrderSize(i) + (field.getSize() - 1))
+                            rowDefinition.getOrderSize(i) + field.getSize()
+                    )
             );
+            i++;
         }
 
         return rowMap;
     }
 
     public String get(String name) {
-
         return rowMap.get(name);
+    }
+
+    public String getFullValue() {
+        StringBuilder sb = new StringBuilder();
+        List<Field> fields = rowDefinition.getStructure();
+        for(Field field : fields) {
+            sb.append(rowMap.get(field.getName()));
+        }
+
+        return sb.toString();
     }
 }
