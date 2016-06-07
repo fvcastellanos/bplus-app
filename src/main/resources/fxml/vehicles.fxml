@@ -14,7 +14,7 @@
       <Pane maxHeight="70.0" prefHeight="70.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <Button layoutX="24.0" layoutY="20.0" mnemonicParsing="false" onAction="#addAction" prefHeight="31.0" prefWidth="101.0" text="Add" />
-            <Button layoutX="138.0" layoutY="20.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="101.0" text="Close" />
+            <Button layoutX="138.0" layoutY="20.0" mnemonicParsing="false" onAction="#closeAction" prefHeight="31.0" prefWidth="101.0" text="Close" />
          </children>
       </Pane>
    </bottom>

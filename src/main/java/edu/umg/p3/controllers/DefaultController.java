@@ -17,6 +17,7 @@ public class DefaultController extends BaseController {
 
     private static String [] ROW_DEFINITION = { "/fxml/row-definition.fxml", "Vehicle system - Row Definition" };
     private static String [] ADD_ROWS = { "/fxml/vehicles.fxml", "Vehicle system - Add vehicle" };
+    private static String [] SEARCH = { "/fxml/search.fxml", "Vehicle system - Search vehicle" };
 
     private VehicleService getVehicleService() {
         return VehicleService.getInstance();
@@ -61,6 +62,11 @@ public class DefaultController extends BaseController {
         } else {
             showWarning("Vehicle system", "You have to define a record structure first");
         }
+    }
+
+    @FXML
+    private void searchVehicle(ActionEvent actionEvent) {
+        loadScene(SEARCH);
     }
 
     @FXML

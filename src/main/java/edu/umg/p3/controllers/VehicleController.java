@@ -10,7 +10,9 @@ import javafx.scene.layout.GridPane;
 import org.apache.commons.lang.StringUtils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by fvcg2 on 5/06/2016.
@@ -63,6 +65,23 @@ public class VehicleController extends BaseController {
         return result;
     }
 
+    private Map<String, String> convertToMap(List<TextField> list) {
+        Map<String, String> map = new HashMap<>();
+        for(TextField textField : list) {
+            map.put(textField.getId(), textField.getText());
+        }
+
+        return map;
+    }
+
+    private void clearFields() {
+        for(TextField textField : textFieldList) {
+            textField.setText("");
+        }
+
+        textFieldList.get(0).requestFocus();
+    }
+
     @FXML
     private void initialize() {
         loadFields();
@@ -72,6 +91,8 @@ public class VehicleController extends BaseController {
     private void addAction(ActionEvent actionEvent) {
         String result = validate();
         if (result.equals("OK")) {
+            vehicleService.addVehicle(convertToMap(textFieldList));
+            clearFields();
 
         } else {
             DialogsUtils.showWarning("Unable to add a vehicle", result);

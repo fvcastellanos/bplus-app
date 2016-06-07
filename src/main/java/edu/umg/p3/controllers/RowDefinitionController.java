@@ -72,6 +72,7 @@ public class RowDefinitionController extends BaseController {
         fieldName.setText("");
         fieldSize.setText("");
         isKey.setSelected(false);
+        fieldName.requestFocus();
     }
 
     @FXML

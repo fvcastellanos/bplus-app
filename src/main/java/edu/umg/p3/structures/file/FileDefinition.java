@@ -3,9 +3,7 @@ package edu.umg.p3.structures.file;
 import edu.umg.p3.dto.Field;
 import edu.umg.p3.structures.tree.BTree;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
+import java.io.*;
 import java.util.Map;
 import java.util.UUID;
 
@@ -54,10 +52,10 @@ public class FileDefinition {
 
             byte [] content = data.getBytes();
 
-            FileOutputStream fop = new FileOutputStream(file);
-            fop.write(content);
-            fop.flush();
-            fop.close();
+            FileWriter fileWriter = new FileWriter(file, true);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            bufferedWriter.write(data);
+            bufferedWriter.close();
 
             addToBPlusTree(data);
 
