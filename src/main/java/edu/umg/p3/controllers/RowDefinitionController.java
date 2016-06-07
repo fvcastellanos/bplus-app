@@ -2,7 +2,6 @@ package edu.umg.p3.controllers;
 
 import edu.umg.p3.dialogs.DialogsUtils;
 import edu.umg.p3.dto.Field;
-import edu.umg.p3.service.VehicleService;
 import edu.umg.p3.structures.file.RowDefinition;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -96,7 +95,8 @@ public class RowDefinitionController extends BaseController {
 
     @FXML
     private void saveFieldDefinitionAction(ActionEvent actionEvent) {
-        vehicleService.setRowDefinition(rowDefinition);
+        vehicleService.createFileDefinition("vehicles.txt", rowDefinition);
+//        vehicleService.setRowDefinition(rowDefinition);
 
         closeWindow(actionEvent);
     }

@@ -21,6 +21,11 @@ public class VehicleService {
         return vehicleService;
     }
 
+    public void createFileDefinition(String fileName, RowDefinition rowDefinition) {
+        this.rowDefinition = rowDefinition;
+        fileDefinition = new FileDefinition(fileName, rowDefinition);
+    }
+
     public void setRowDefinition(RowDefinition rowDefinition) {
         this.rowDefinition = rowDefinition;
     }
