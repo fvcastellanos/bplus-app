@@ -39,6 +39,10 @@ public class VehicleService {
         fileDefinition.writeRow(rowProcessor.getFullValue());
     }
 
+    public String getFileContent() {
+        return fileDefinition.readFile();
+    }
+
     public Map<String, String> searchVehicle(String key) {
         return fileDefinition.findByKey(key);
     }

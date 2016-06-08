@@ -18,6 +18,7 @@ public class DefaultController extends BaseController {
     private static String [] ROW_DEFINITION = { "/fxml/row-definition.fxml", "Vehicle system - Row Definition" };
     private static String [] ADD_ROWS = { "/fxml/vehicles.fxml", "Vehicle system - Add vehicle" };
     private static String [] SEARCH = { "/fxml/search.fxml", "Vehicle system - Search vehicle" };
+    private static String [] DISPLAY = { "/fxml/display-file.fxml", "Vehicle system - Display vehicles" };
 
     private VehicleService getVehicleService() {
         return VehicleService.getInstance();
@@ -67,6 +68,11 @@ public class DefaultController extends BaseController {
     @FXML
     private void searchVehicle(ActionEvent actionEvent) {
         loadScene(SEARCH);
+    }
+
+    @FXML
+    private void displayFile(ActionEvent actionEvent) {
+        loadScene(DISPLAY);
     }
 
     @FXML

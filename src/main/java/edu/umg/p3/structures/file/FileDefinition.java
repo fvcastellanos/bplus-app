@@ -13,11 +13,12 @@ import java.util.UUID;
 public class FileDefinition {
     private String fileName;
     private RowDefinition rowDefinition;
-    private RowProcessor rowProcessor;
+//    private RowProcessor rowProcessor;
     private BTree<String, Integer> tree;
     private int size;
 
     private void addToBPlusTree(String data) {
+        RowProcessor rowProcessor = new RowProcessor(rowDefinition);
         Map<String, String> map = rowProcessor.process(data);
         Field field = rowDefinition.getKeyField();
         String key = map.get(field.getName());
@@ -30,7 +31,7 @@ public class FileDefinition {
         this.rowDefinition = rowDefinition;
         size = 0;
         tree = new BTree<>(3);
-        rowProcessor = new RowProcessor(rowDefinition);
+//        rowProcessor = new RowProcessor(rowDefinition);
     }
 
     public FileDefinition(RowDefinition rowDefinition) {
@@ -50,8 +51,6 @@ public class FileDefinition {
                 file.createNewFile();
             }
 
-            byte [] content = data.getBytes();
-
             FileWriter fileWriter = new FileWriter(file, true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             bufferedWriter.write(data);
@@ -67,14 +66,15 @@ public class FileDefinition {
     public String readRow(int record) {
         String value = null;
         try {
-            File file = new File(fileName);
             byte [] content = new byte[rowDefinition.getRowSize()];
-            FileInputStream fis = new FileInputStream(file);
-            fis.read(content, record * rowDefinition.getRowSize(), rowDefinition.getRowSize());
-            fis.close();
+            RandomAccessFile randomAccessFile = new RandomAccessFile(fileName, "r");
+            randomAccessFile.seek(record * rowDefinition.getRowSize());
+
+            randomAccessFile.read(content);
+
+            randomAccessFile.close();
 
             value = new String(content);
-
         } catch(Exception ex) {
             ex.printStackTrace();
         }
@@ -83,6 +83,7 @@ public class FileDefinition {
     }
 
     public Map<String, String> readRecord(int record) {
+        RowProcessor rowProcessor = new RowProcessor(rowDefinition);
         Map<String, String> value = null;
 
         String row = readRow(record);
@@ -99,6 +100,31 @@ public class FileDefinition {
         Integer record = tree.search(key);
         if (record != null) {
            value = readRecord(record);
+        }
+
+        return value;
+    }
+
+    public String readFile() {
+        String value = null;
+
+        try {
+            StringBuilder sb = new StringBuilder();
+            File file = new File(fileName);
+            FileInputStream fis = new FileInputStream(file);
+            byte [] content;
+            for(int i=0;i<size;i++) {
+                content = new byte[rowDefinition.getRowSize()];
+                fis.read(content);
+                sb.append(new String(content));
+            }
+
+            value = sb.toString();
+
+            fis.close();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
 
         return value;
