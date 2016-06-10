@@ -27,11 +27,16 @@ public class SearchController extends BaseController {
     }
 
     private void fillSearch(Map<String, String> map) {
+
         StringBuilder sb = new StringBuilder();
         sb.append("Search: {\n");
 
-        for(String key : map.keySet()) {
-            sb.append("  " + key + ": " + map.get(key) + "\n");
+        if (map != null) {
+            for(String key : map.keySet()) {
+                sb.append("  " + key + ": " + map.get(key) + "\n");
+            }
+        } else {
+            sb.append("  No data found\n");
         }
 
         sb.append("}\n");

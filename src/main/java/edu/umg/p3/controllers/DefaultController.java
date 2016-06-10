@@ -19,6 +19,7 @@ public class DefaultController extends BaseController {
     private static String [] ADD_ROWS = { "/fxml/vehicles.fxml", "Vehicle system - Add vehicle" };
     private static String [] SEARCH = { "/fxml/search.fxml", "Vehicle system - Search vehicle" };
     private static String [] DISPLAY = { "/fxml/display-file.fxml", "Vehicle system - Display vehicles" };
+    private static String [] TREE = { "/fxml/btree.fxml", "Vehicle system - Display B+ Tree content (Beta)" };
 
     private VehicleService getVehicleService() {
         return VehicleService.getInstance();
@@ -77,6 +78,12 @@ public class DefaultController extends BaseController {
 
     @FXML
     private void closeApplication(ActionEvent actionEvent) {
-        this.closeWindow(actionEvent);
+//        this.closeWindow(actionEvent);
+        System.exit(0);
+    }
+
+    @FXML
+    private void structure(ActionEvent actionEvent) {
+        loadScene(TREE);
     }
 }

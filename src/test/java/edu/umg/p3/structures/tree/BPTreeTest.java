@@ -48,4 +48,31 @@ public class BPTreeTest {
         assertEquals(data, tree.search(key));
 
     }
+
+    @Test
+    public void traverseTest() {
+
+        Integer[][] data = {
+                { 1, 1 },
+                { 2, 2 },
+                { 3, 3 },
+                { 4, 4 },
+                { 5, 5 },
+                { 6, 6 },
+                { 7, 7 },
+                { 8, 8 },
+                { 9, 9 }
+        };
+
+        BTree<Integer, Integer> tree = new BTree<>(3);
+        assertNotNull(tree);
+        for(Integer[] numbers : data) {
+            tree.insert(numbers[0], numbers[1]);
+        }
+
+        String values = tree.traverse();
+
+        System.out.println(values);
+        assertNotNull(values);
+    }
 }

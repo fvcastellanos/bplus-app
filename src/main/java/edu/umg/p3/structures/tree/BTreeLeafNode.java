@@ -1,7 +1,7 @@
 package edu.umg.p3.structures.tree;
 
 class BTreeLeafNode<TKey extends Comparable<TKey>, TValue> extends BTreeNode<TKey> {
-	protected final static int LEAFORDER = 4;
+	protected final static int LEAFORDER = 3;
 	private Object[] values;
 	
 	public BTreeLeafNode() {
@@ -156,5 +156,9 @@ class BTreeLeafNode<TKey extends Comparable<TKey>, TValue> extends BTreeNode<TKe
 		siblingNode.deleteAt(borrowIndex);
 		
 		return borrowIndex == 0 ? sibling.getKey(0) : this.getKey(0);
+	}
+
+	public Object[] getValues() {
+		return this.values;
 	}
 }

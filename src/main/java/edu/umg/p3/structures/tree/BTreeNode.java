@@ -145,7 +145,54 @@ abstract class BTreeNode<TKey extends Comparable<TKey>> {
 			return this.getParent().processChildrenFusion(this, rightSibling);
 		}
 	}
-	
+
+	private String getKeys(BTreeNode<TKey> node, String value) {
+		value += " node keys: [ ";
+
+		for(int i=0;i<keyCount;i++) {
+			value += keys[i].toString() + ", ";
+		}
+
+		value += " ]\n";
+
+		return value;
+	}
+
+	private String getValues(BTreeNode<TKey> node, String value) {
+		if(node != null) {
+			value += " leaf node values: [ ";
+			BTreeLeafNode leaf = (BTreeLeafNode) node;
+			for(int i=0;i<leaf.getValues().length;i++) {
+				if(leaf.getValue(i) != null)
+				value += leaf.getValue(i).toString() + ", ";
+			}
+			value += " ]\n";
+		}
+
+		return value;
+	}
+
+	public String traverse(BTreeNode<TKey> node, String value) {
+		if(node != null) {
+			if(node.getNodeType() == TreeNodeType.InnerNode) {
+                if(node.getRightSibling() != null) {
+                    value += traverse(node.getRightSibling(), value);
+                }
+				for(int i=0;i<keyCount;i++) {
+					if(keys[i] != null) {
+						value += traverse(((BTreeInnerNode<TKey>) node).getChild(i), value);
+                        value+= " key: " + keys[i].toString();
+					}
+
+				}
+			} else {
+				value += getValues(node, value);
+			}
+		}
+
+		return value;
+	}
+
 	protected abstract void processChildrenTransfer(BTreeNode<TKey> borrower, BTreeNode<TKey> lender, int borrowIndex);
 	
 	protected abstract BTreeNode<TKey> processChildrenFusion(BTreeNode<TKey> leftChild, BTreeNode<TKey> rightChild);

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="269.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.umg.p3.controllers.TreeController">
+   <children>
+      <TextArea fx:id="textArea" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="571.0" />
+      <Button layoutX="14.0" layoutY="226.0" mnemonicParsing="false" onAction="#display" prefHeight="27.0" prefWidth="91.0" text="Display" />
+      <Button layoutX="112.0" layoutY="226.0" mnemonicParsing="false" onAction="#close" prefHeight="27.0" prefWidth="91.0" text="Close" />
+   </children>
+</Pane>

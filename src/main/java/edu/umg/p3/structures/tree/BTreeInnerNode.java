@@ -1,17 +1,20 @@
 package edu.umg.p3.structures.tree;
 
 class BTreeInnerNode<TKey extends Comparable<TKey>> extends BTreeNode<TKey> {
-	protected final static int INNERORDER = 4;
-	protected Object[] children; 
+	protected final static int INNERORDER = 3;
+	protected Object[] children;
+	private int order;
 	
 	public BTreeInnerNode() {
 		this.keys = new Object[INNERORDER + 1];
 		this.children = new Object[INNERORDER + 2];
+		this.order = INNERORDER;
 	}
 
 	public BTreeInnerNode(int order) {
         this.keys = new Object[order + 1];
         this.children = new Object[order + 2];
+		this.order = order;
     }
 	
 	@SuppressWarnings("unchecked")
@@ -72,7 +75,7 @@ class BTreeInnerNode<TKey extends Comparable<TKey>> extends BTreeNode<TKey> {
 	protected BTreeNode<TKey> split() {
 		int midIndex = this.getKeyCount() / 2;
 		
-		BTreeInnerNode<TKey> newRNode = new BTreeInnerNode<TKey>();
+		BTreeInnerNode<TKey> newRNode = new BTreeInnerNode<TKey>(this.order);
 		for (int i = midIndex + 1; i < this.getKeyCount(); ++i) {
 			newRNode.setKey(i - midIndex - 1, this.getKey(i));
 			this.setKey(i, null);

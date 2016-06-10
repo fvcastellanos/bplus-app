@@ -67,4 +67,11 @@ public class BTree<TKey extends Comparable<TKey>, TValue> {
 		
 		return (BTreeLeafNode<TKey, TValue>)node;
 	}
+
+    public String traverse() {
+        BTreeNode<TKey> node = this.root;
+        String value = node.traverse(node, "");
+
+        return value;
+    }
 }

@@ -43,6 +43,17 @@ public class VehicleService {
         return fileDefinition.readFile();
     }
 
+    public String getBTreeContent() {
+
+        String value = "";
+
+        if(fileDefinition.getTree() != null) {
+            value = fileDefinition.getTree().traverse();
+        }
+
+        return value;
+    }
+
     public Map<String, String> searchVehicle(String key) {
         return fileDefinition.findByKey(key);
     }

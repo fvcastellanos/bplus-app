@@ -130,4 +130,7 @@ public class FileDefinition {
         return value;
     }
 
+    public BTree<String, Integer> getTree() {
+        return tree;
+    }
 }
