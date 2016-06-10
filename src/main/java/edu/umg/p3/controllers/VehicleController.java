@@ -50,19 +50,24 @@ public class VehicleController extends BaseController {
     }
 
     private String validate() {
-        String result = "OK";
         for(TextField textField : textFieldList) {
-            if(StringUtils.isEmpty(textField.getText())) {
-                result = "Please enter a value for field: " + textField.getId();
+            if (StringUtils.isEmpty(textField.getText())) {
+                return "Please enter a value for field: " + textField.getId();
             }
 
             Field field = vehicleService.getRowDefinition().findField(textField.getId());
-            if((field.isKey()) && (!StringUtils.isNumeric(textField.getText()))) {
-                result = "Key field allows only numeric values: " + textField.getId();
+            if ((field.isKey()) && (!StringUtils.isNumeric(textField.getText()))) {
+                return "Key field allows only numeric values: " + textField.getId();
+            }
+
+            if (field.isKey()) {
+                if (vehicleService.searchVehicle(textField.getText()) != null) {
+                    return "Key value already exists";
+                }
             }
         }
 
-        return result;
+        return "OK";
     }
 
     private Map<String, String> convertToMap(List<TextField> list) {

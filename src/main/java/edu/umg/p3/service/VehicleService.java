@@ -45,9 +45,9 @@ public class VehicleService {
 
     public String getBTreeContent() {
 
-        String value = "";
+        String value = "No data found";
 
-        if(fileDefinition.getTree() != null) {
+        if(fileDefinition != null && fileDefinition.getTree() != null) {
             value = fileDefinition.getTree().traverse();
         }
 
